@@ -1,5 +1,6 @@
 import { Seller } from "../src/seller";
 import { Employee, Manajer } from "../src/employee";
+import { Person } from "../src/person";
 describe("Interface", () => {
   it("should support in typescript", () => {
     const seller: Seller = {
@@ -66,5 +67,16 @@ describe("Interface", () => {
       numberOfEmployees: 10,
     };
     console.info(manajer);
+  });
+
+  it("should support function in interface", () => {
+    const person: Person = {
+      name: "Rizal",
+      sayHello: function (name: string): string {
+        return `Hello ${name}, my name is ${this.name}`;
+      },
+    };
+
+    expect(person.sayHello("Boy")).toBe("Hello Boy, my name is Rizal");
   });
 });
