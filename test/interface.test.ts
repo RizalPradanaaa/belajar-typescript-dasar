@@ -96,4 +96,15 @@ describe("Interface", () => {
     };
     console.info(domain);
   });
+
+  it("should support Type Assertions", () => {
+    const person: any = {
+      name: "Boy",
+      age: 22,
+    };
+
+    const person2: Person = person as Person;
+    console.info(person2);
+    // console.info(person2.sayHello("Budi"));      // cannot
+  });
 });
