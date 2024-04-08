@@ -29,4 +29,18 @@ describe("Function in typescript", () => {
     }
     expect(sum(1, 2, 3, 4, 5)).toBe(15);
   });
+  it("should support function overloading", () => {
+    function Callme(value: number): number;
+    function Callme(value: string): string;
+    function Callme(value: any): any {
+      if (typeof value === "string") {
+        return value.toUpperCase();
+      } else if (typeof value === "number") {
+        return value * 10;
+      }
+    }
+
+    expect(Callme("rizal")).toBe("RIZAL");
+    expect(Callme(10)).toBe(100);
+  });
 });
