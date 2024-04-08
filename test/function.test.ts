@@ -43,4 +43,27 @@ describe("Function in typescript", () => {
     expect(Callme("rizal")).toBe("RIZAL");
     expect(Callme(10)).toBe(100);
   });
+
+  it("should support function as paramater", () => {
+    function sayHello(name: string, filter: (name: string) => string): string {
+      return `Hello ${filter(name)}`;
+    }
+    function toUpper(name: string): string {
+      return name.toUpperCase();
+    }
+
+    expect(sayHello("Rizal", toUpper)).toBe("Hello RIZAL");
+
+    // Anonymous function
+    expect(
+      sayHello("Rizal", function (name: string): string {
+        return name.toUpperCase();
+      })
+    ).toBe("Hello RIZAL");
+
+    // Arrow function
+    expect(
+      sayHello("Rizal", (name: string): string => name.toUpperCase())
+    ).toBe("Hello RIZAL");
+  });
 });
